@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn{
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(332%, 100%);
+  background-color:#504aff;
+  color: white;
+  padding: 16px;
+  font-size: 20px;
+  border: none;
+}
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #413da6;
+}
+
+#myInput{
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 20px;
+  padding: 15px 20px 15px 40px;
+  border: none;
+  border-bottom: 1px solid #191596;
+}
+.dropdown {
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(-380%, -800%);
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(85%,27%);
+  display: none;
+  position: absolute;
+  background-color: #413da6;
+  min-width: 220px;
+  overflow: auto;
+  border: 1px solid #191596;
+  z-index: 1;
+}
+.dropdown-content a {
+  color: white;
+  padding: 14px 18px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown a:hover {background-color: #191596;}
+.show {display: block;}
+</style>
+</head>
+<body>
+<div id="myDIV" class="header">
+  <h1 style = "text-align: center;">Ambulance</h1>
+</div>
+<div class="dropdown">
+  <button onclick = "what_emergency()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Type Emergency.." id="myInput" onkeyup="filterEmergency()">
+    <a href="#">Heart Attack</a>
+    <a href="#">Severe Bleeding</a>
+    <a href="#">Miscarriage</a>
+    <a href="#">Overdose</a>
+    <a href="#">Severe Burns</a>
+    <a href="#">Allergic Reaction</a>
+  </div>
+</div>
+<script>
+function what_emergency(){
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+function filterEmergency(){
+  var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }
+</script>
+</body>
+</html>
